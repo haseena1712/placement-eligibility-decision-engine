@@ -5,44 +5,39 @@ public class Candidate {
     private int graduationYear;
     private String[] skills;
 
-    public Candidate(String name, double percentage, int backlogs, int graduationYear) {
-        this(name, percentage, backlogs, graduationYear, new String[0]);
-    }
-
-    public Candidate(String name, double percentage, int backlogs, int graduationYear, String[] skills) {
+    public Candidate(
+        String name,
+        double percentage,
+        int backlogs,
+        int graduationYear,
+        String[] skills
+    ) {
         this.name = name;
         this.percentage = percentage;
         this.backlogs = backlogs;
         this.graduationYear = graduationYear;
-        this.skills = skills != null ? skills : new String[0];
+        this.skills = skills;
     }
 
     public String getName() {
-        return name; 
-    }  
+        return name;
+    }
 
     public double getPercentage() {
-        return percentage;  
-    }  
+        return percentage;
+    }
 
     public int getBacklogs() {
-        return backlogs;  
-    }  
+        return backlogs;
+    }
 
     public int getGraduationYear() {
-        return graduationYear;  
+        return graduationYear;
     }
 
-    public String[] getSkills() {
-        return skills;
-    }
-
-    public boolean hasSkill(String targetSkill) {
-        if (skills == null || targetSkill == null) {
-            return false;
-        }
-        for (String skill : skills) {
-            if (skill != null && skill.equalsIgnoreCase(targetSkill)) {
+    public boolean hasSkill(String requiredSkill) {
+        for (int i = 0; i < skills.length; i++) {
+            if (skills[i].equalsIgnoreCase(requiredSkill)) {
                 return true;
             }
         }
